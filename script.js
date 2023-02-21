@@ -13,10 +13,10 @@ const submitBtn = document.getElementById("submit");
 let scoreTime = 60;
 let questionNumber = 0;
 let myInterval;
-// if(localStorage.getItem("scoreBoard") == null){
-//     localStorage.setItem("scoreBoard", '[]');
-// }
-let scoreArr = ['JD', 'AB', 'CD', 'EF']//JSON.parse(localStorage.getItem("scoreBoard"))
+if(localStorage.getItem("scoreBoard") == null){
+    localStorage.setItem("scoreBoard", '[]');
+}
+let scoreArr = JSON.parse(localStorage.getItem("scoreBoard"))
 
 const questions = [
     {
@@ -76,7 +76,7 @@ function getQuestion(q){
     // console.log("Get Question Function Begin q: "+ q)
     questionDiv.textContent = q.question; // adds text to the question
     buttons.forEach(function(button, index){
-        button.textContent = q.answer[index]; //adds text and event listeners to the buttons
+        button.textContent = q.answer[index]; //adds text to the buttons
     })
 }
 
@@ -94,6 +94,7 @@ function check(a){ // a will be 0-3, depending on answer givin
     }
 
     questionNumber++;
+
     if(questionNumber >= questions.length){ // ends quiz if there aren't any more questions
         quizEnd();
     }
@@ -122,20 +123,19 @@ function fastEnd(){
     quizEnd();
 }
 
-function submit(event){ 
-    // scoreArr.push("JD")
+function submit(event){
     event.preventDefault();
     submitBtn.disabled = true;
-    let initials = document.getElementById("initials").innerText;
+    let initials = document.getElementById("initials").value;
+    console.log(initials)
     scoreArr.push(initials);
     boardDiV.innerHTML = scoreArr;
-    //localStorage.setItem("scoreBoard", JSON.stringify(scoreArr))
+    localStorage.setItem("scoreBoard", JSON.stringify(scoreArr))
 }
 
-function clear(){
+function clear1(){
     localStorage.clear()
-    sessionStorage.clear()
-    //localStorage.setItem("scoreBoard", JSON.stringify(scoreArr))
+    console.log("Clear Clicked")
     scoreArr = [];
     boardDiV.innerHTML = scoreArr;
 }
