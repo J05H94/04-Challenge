@@ -1,0 +1,7 @@
+.gameSpace, .final{  
+    display: none;
+}
+
+.timer{
+    text-align: right;
+}
