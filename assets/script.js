@@ -39,7 +39,7 @@ const questions = [
     
     {
         question: "Q4: HULK: ",
-        answer: ["CLOBBER TIME", "SMASH", "CRUSH", "Rip and Tear"],
+        answer: ["CLOBBERING TIME", "SMASH", "CRUSH", "Rip and Tear"],
         correctAnswer: 1
     },
     
